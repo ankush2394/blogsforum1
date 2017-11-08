@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load comments %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ blog.title }}</title>
+</head>
+<body bgcolor="#faebd7">
+<h1 >{{ blog.title }}</h1><br>
+<h2>{{ blog.sub_title }}</h2><br>
+<h3>{{ blog.content }}</h3><br>
+<h5>The current rating of the blog is {{ blog.rating }}</h5>
+
+
+
+
+<br><br>
+<label ><center><u><i>You already have a rating for this blog.</i></u></center> </label>
+
+<form action="{% url 'popluar:index2' blog.id %}"method="post">
+    <label>Enter your comments</label>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Publish" />
+</form>
+{% for comment in comments.all %}
+    <div class="comment">
+        <div class="date">{{ comment.created_date }}</div>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>

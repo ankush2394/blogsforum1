@@ -1,0 +1,11 @@
+<h1>Welcome {{ user.username }} to the delete section.</h1>
+
+<ul>
+{% for blogs in user.blog_set.all %}
+
+    <li><a href="{{  blogs.id }}/">{{ blogs }}</a></li><br>
+
+
+
+{% endfor %}
+</ul>

@@ -1,0 +1,10 @@
+<h1>Welcome </h1>{{ user.username }}
+<h2>Good to see you adding more.</h2>
+<form action="{% url 'add_blog:index1' %}" method="post">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <center><input type="submit" value="Click to submit"/></center>
+
+</form>

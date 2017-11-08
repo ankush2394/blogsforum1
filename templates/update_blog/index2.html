@@ -1,0 +1,8 @@
+<h1> Welcome {{ user.username }} to the update section.</h1>
+
+<form action="{% url 'update_blog:index2' blog_id %}" method="post">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="save"/>
+</form>
